@@ -18,7 +18,7 @@ public class Dao {
 	public void getEhdokkaat() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");  
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/vaalikone", "root", "LAITA OMA SALASANA TÄHÄN");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/vaalikone", "appuser@localhost", "kukkuluuruu");
 			Statement stmn = conn.createStatement();
 			ResultSet rs = stmn.executeQuery("SELECT * FROM EHDOKKAAT");
 			
