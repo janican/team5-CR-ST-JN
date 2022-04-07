@@ -55,12 +55,12 @@ public class AddCandidates extends HttpServlet {
 				// print output and close connection
 				printCandidatesList(out, list);
 				dao.close();
-}
-	out.println("<br><a href='./form.html'>Back to form</a>");
-	
+
+	// <a href='.WEB-INF/kysely.html'>"Back to form"</a>
+	 
 	rd=request.getRequestDispatcher("staticpages/htmlend.html");
-	rd.include(request,  response);;
-	}
+	rd.include(request,  response);; }
+	
 	private Candidates readCandidates(HttpServletRequest request) {
 		Candidates candidates=new Candidates();
 		candidates.setSukunimi(request.getParameter("sukunimi"));

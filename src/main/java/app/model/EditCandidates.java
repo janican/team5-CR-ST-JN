@@ -59,7 +59,7 @@ public class EditCandidates extends HttpServlet {
 		Dao dao=new Dao();
 		Candidates candidates = readCandidates(request);
 		
-		dao.updateCandidates(candidates);
+		dao.saveCandidates(candidates);
 		
 		dao.close();
 		

@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class Dao {
 	private Connection conn;
@@ -33,6 +34,26 @@ public class Dao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public void saveCandidates(Candidates candidates) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public ArrayList<Candidates> readAllCandidates() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void close() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Candidates getCandidatesInfo(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
