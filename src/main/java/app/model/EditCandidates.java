@@ -26,11 +26,11 @@ public class EditCandidates extends HttpServlet {
 		// if sessions does not exist, create new one
 		HttpSession session = request.getSession();
 		
-		String idValue = request.getParameter("id");
+		String ehdokas_idValue = request.getParameter("ehdokas_id");
 		
-		if ( idValue != null ) {
+		if ( ehdokas_idValue != null ) {
 			try {
-				int id = Integer.parseInt(idValue);
+				int id = Integer.parseInt(ehdokas_idValue);
 				
 				Dao dao = new Dao();
 				Candidates candidates = dao.getCandidatesInfo(id);
@@ -79,7 +79,7 @@ public class EditCandidates extends HttpServlet {
 		Candidates candidates=new Candidates();
 		candidates.setSukunimi(request.getParameter("sukunimi"));
 		candidates.setEtunimi(request.getParameter("etunimi"));
-		candidates.setId(Integer.parseInt(request.getParameter("id")));
+		candidates.setEhdoaks_id(Integer.parseInt(request.getParameter("ehdokas_id")));
 		return candidates;
 	}
 }

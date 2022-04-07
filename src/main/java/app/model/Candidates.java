@@ -3,7 +3,7 @@ package app.model;
 import java.io.Serializable;
 
 public class Candidates implements Serializable {
-	private int id;
+	private int ehdokas_id;
 	private String sukunimi;
 	private String etunimi;
 	private String puolue;
@@ -14,10 +14,10 @@ public class Candidates implements Serializable {
 	private String ammatti;
 	
 	public int getId() {
-		return id;
+		return ehdokas_id;
 	}
 	public void setId(int id) {
-		this.id = id;
+		this.ehdokas_id = id;
 	}
 	public String getSukunimi() {
 		return sukunimi;
@@ -68,7 +68,7 @@ public class Candidates implements Serializable {
 		this.ammatti = ammatti;
 	}
 	public String toString() {
-		return id+" "+sukunimi+" "+etunimi+" "+puolue+" "+kotipaikkakunta+" "
+		return ehdokas_id+" "+sukunimi+" "+etunimi+" "+puolue+" "+kotipaikkakunta+" "
 		+ika+" "+miksi_eduskuntaan+" "+mita_asioita_haluat_edistaa+" "
 		+ammatti;
 		
