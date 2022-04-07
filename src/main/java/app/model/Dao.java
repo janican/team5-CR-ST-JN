@@ -81,9 +81,63 @@ public class Dao {
 		return null;
 	}
 
+	//public void close() {
+	//	try { 
+	//		conn.close();
+	//	} catch (SQLException e) {
+	//		e.printStackTrace();;
+	//	}
+	// }
+	public void addUser(String tunnus, String hashsalasana, String salt) {
+		// TODO Auto-generated method stub
+		String sql = "insert into kayttaja (tunnus, hashsalasana, salt) values (?,?,?)";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			
+			stmt.setString(1, tunnus);
+			stmt.setString(2, hashsalasana);
+			stmt.setString(3, salt);
+			
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public String getTunnusSalt(String tunnus) {
+		String result = "";
+		String sql = "select salt from kayttaja where tunnus = ?";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			
+			stmt.setString(1, tunnus);
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			if ( rs.next() ) {
+				result = rs.getString("salt");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;	
+	}
 	
-
-		
-	
-
+	public String getTunnusHashSalasana(String kayttaja) {
+		String result = "";
+		String sql = "select hashsalasana from kayttaja where tunnus = ?";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			
+			stmt.setString(1, kayttaja);
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			if ( rs.next() ) {
+				result = rs.getString("hashsalasana");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }
