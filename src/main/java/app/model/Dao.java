@@ -11,7 +11,18 @@ import java.util.ArrayList;
 public class Dao {
 	private Connection conn;
 	public Dao() { // DAO = DATA ACCESS OBJECT
-	
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");  
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/vaalikone", "appuser@localhost", "kukkuluuruu");
+			
+			
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -19,8 +30,8 @@ public class Dao {
 	 */
 	public void getEhdokkaat() {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");  
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/vaalikone", "appuser@localhost", "kukkuluuruu");
+			//Class.forName("com.mysql.cj.jdbc.Driver");  
+			//conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/vaalikone", "appuser@localhost", "kukkuluuruu");
 			Statement stmn = conn.createStatement();
 			ResultSet rs = stmn.executeQuery("SELECT * FROM EHDOKKAAT");
 			
@@ -32,34 +43,27 @@ public class Dao {
 		catch (SQLException e) {
 			e.printStackTrace();
 		} 
-		catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+		
 	}
 
-	private ResultSet saveCandidates(Connection conn, String sukunimi, String etunimi, String puolue, String kotipaikkakunta, int ika, String miksi_eduskuntaan, String mita_asioita_haluat_edistaa, String ammatti) {
+	public void saveCandidates(candidates) {
 	
 		String sql="insert into ehdokkaat(sukunimi, etunimi, puolue, kotipaikkakunta, ika, miksi_eduskuntaan, mita_asioita_haluat_edistaa, ammatti) values(?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1,  sukunimi);
-			pstmt.setString(2, etunimi);
-			pstmt.setString(3, puolue);
-			pstmt.setString(4, kotipaikkakunta);
-			pstmt.setInt(5, ika);
-			pstmt.setString(6, miksi_eduskuntaan);
-			pstmt.setString(7, mita_asioita_haluat_edistaa);
-			pstmt.setString(8, ammatti);
+			pstmt.getString(1,  sukunimi);
+			pstmt.getString(2, etunimi);
+			pstmt.getString(3, puolue);
+			pstmt.getString(4, kotipaikkakunta);
+			pstmt.getInt(5, ika);
+			pstmt.getString(6, miksi_eduskuntaan);
+			pstmt.getString(7, mita_asioita_haluat_edistaa);
+			pstmt.getString(8, ammatti);
 			pstmt.executeUpdate();
-			
-			ResultSet RS=pstmt.executeQuery("select * from ehdokkaat");
-			return RS;
-			
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
 	}
 
 	public ArrayList<Candidates> readAllCandidates() {
@@ -67,9 +71,9 @@ public class Dao {
 		return null;
 	}
 
-	public void close() {
+	public void close() throws SQLException {
 		// TODO Auto-generated method stub
-		
+		conn.close();
 	}
 
 	public Candidates getCandidatesInfo(int id) {
