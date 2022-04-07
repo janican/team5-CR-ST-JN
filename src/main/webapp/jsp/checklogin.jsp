@@ -41,7 +41,7 @@
                     out.println("Either you enter Invalid UserName or Password! Please Try Again");
 
 		%>
-		<jsp:include page="WEB-INF/admin.html" />
+		<jsp:include page="/admin.html" />
 		<%
 }
 

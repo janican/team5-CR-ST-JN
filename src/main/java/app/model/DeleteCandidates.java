@@ -1,6 +1,7 @@
 package app.model;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -36,7 +37,7 @@ public class DeleteCandidates extends HttpServlet {
 				
 				session.setAttribute("candidates", candidates);
 				
-				RequestDispatcher rd = request.getRequestDispatcher("jsp/editform.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("jsp/editcandidates.jsp");
 				rd.forward(request, response);
 				
 			} catch (Exception e) {
@@ -59,9 +60,14 @@ public class DeleteCandidates extends HttpServlet {
 		Dao dao=new Dao();
 		Candidates candidates = readCandidates(request);
 		
-		dao.deleteCandidates(candidates);
+		dao.saveCandidates(candidates);
 		
-		dao.close();
+		try {
+			dao.close();
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		// Back to list after actions
 		//RequestDispatcher rd = request.getRequestDispatcher("/showdata");

@@ -39,8 +39,6 @@ public class AddCandidates extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		
-		RequestDispatcher rd=request.getRequestDispatcher("staticpages/htmlstart.html");
-		rd.include(request,  response);;
 		
 		// Read parameters to Model
 				Candidates candidates=readCandidates(request);
@@ -54,12 +52,16 @@ public class AddCandidates extends HttpServlet {
 				
 				// print output and close connection
 				printCandidatesList(out, list);
-				dao.close();
+				try {
+					dao.close();
+				} 
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 
 	// <a href='.WEB-INF/kysely.html'>"Back to form"</a>
 	 
-	rd=request.getRequestDispatcher("staticpages/htmlend.html");
-	rd.include(request,  response);; }
 	
 	private Candidates readCandidates(HttpServletRequest request) {
 		Candidates candidates=new Candidates();
