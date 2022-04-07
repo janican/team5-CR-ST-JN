@@ -2,6 +2,7 @@ package app.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -27,18 +28,38 @@ public class Dao {
 				System.out.println(rs.getString("ETUNIMI"));
 			}
 			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void saveCandidates(Candidates candidates) {
-		// TODO Auto-generated method stub
-		
+	private ResultSet saveCandidates(Connection conn, String sukunimi, String etunimi, String puolue, String kotipaikkakunta, int ika, String miksi_eduskuntaan, String mita_asioita_haluat_edistaa, String ammatti) {
+	
+		String sql="insert into ehdokkaat(sukunimi, etunimi, puolue, kotipaikkakunta, ika, miksi_eduskuntaan, mita_asioita_haluat_edistaa, ammatti) values(?,?,?,?,?,?,?,?)";
+		try {
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1,  sukunimi);
+			pstmt.setString(2, etunimi);
+			pstmt.setString(3, puolue);
+			pstmt.setString(4, kotipaikkakunta);
+			pstmt.setInt(5, ika);
+			pstmt.setString(6, miksi_eduskuntaan);
+			pstmt.setString(7, mita_asioita_haluat_edistaa);
+			pstmt.setString(8, ammatti);
+			pstmt.executeUpdate();
+			
+			ResultSet RS=pstmt.executeQuery("select * from ehdokkaat");
+			return RS;
+			
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public ArrayList<Candidates> readAllCandidates() {
@@ -55,5 +76,10 @@ public class Dao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
+
+		
+	
 
 }

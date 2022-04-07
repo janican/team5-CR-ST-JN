@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.sql.*"%><b><center>     
+<%@ page language="java" import="java.sql.*"%>     
         <%
 
             String name = request.getParameter("uname");
