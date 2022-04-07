@@ -1,6 +1,7 @@
 package app.model;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -61,7 +62,12 @@ public class EditCandidates extends HttpServlet {
 		
 		dao.saveCandidates(candidates);
 		
-		dao.close();
+		try {
+			dao.close();
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		// Back to list after actions
 		//RequestDispatcher rd = request.getRequestDispatcher("/showdata");

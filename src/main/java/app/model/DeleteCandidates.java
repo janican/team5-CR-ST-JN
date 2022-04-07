@@ -59,7 +59,7 @@ public class DeleteCandidates extends HttpServlet {
 		Dao dao=new Dao();
 		Candidates candidates = readCandidates(request);
 		
-		dao.saveCandidates(candidates);
+		dao.deleteCandidates(candidates);
 		
 		dao.close();
 		

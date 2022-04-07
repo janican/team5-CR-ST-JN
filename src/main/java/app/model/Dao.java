@@ -46,19 +46,19 @@ public class Dao {
 		
 	}
 
-	public void saveCandidates(candidates) {
+	public void saveCandidates(Candidates candidates) {
 	
 		String sql="insert into ehdokkaat(sukunimi, etunimi, puolue, kotipaikkakunta, ika, miksi_eduskuntaan, mita_asioita_haluat_edistaa, ammatti) values(?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement pstmt=conn.prepareStatement(sql);
-			pstmt.getString(1,  sukunimi);
-			pstmt.getString(2, etunimi);
-			pstmt.getString(3, puolue);
-			pstmt.getString(4, kotipaikkakunta);
-			pstmt.getInt(5, ika);
-			pstmt.getString(6, miksi_eduskuntaan);
-			pstmt.getString(7, mita_asioita_haluat_edistaa);
-			pstmt.getString(8, ammatti);
+			pstmt.setString(1,  candidates.getSukunimi());
+			pstmt.setString(2, candidates.getEtunimi());
+			pstmt.setString(3, candidates.getPuolue());
+			pstmt.setString(4, candidates.getKotipaikkakunta());
+			pstmt.setInt(5, candidates.getIka());
+			pstmt.setString(6, candidates.getMiksi_eduskuntaan());
+			pstmt.setString(7, candidates.getMita_asioita_haluat_edistaa());
+			pstmt.setString(8, candidates.getAmmatti());
 			pstmt.executeUpdate();
 		} 
 		catch (SQLException e) {
