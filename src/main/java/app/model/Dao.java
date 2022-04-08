@@ -65,7 +65,7 @@ public class Dao {
 			e.printStackTrace();
 		}
 	}
-
+/**
 	public ArrayList<Candidates> readAllCandidates() {
 		ArrayList<Candidates> list=new ArrayList<>();
 		Statement stmt=null;
@@ -92,7 +92,7 @@ public class Dao {
 		}
 		return list;
 	}
-
+**/
 	public void close() throws SQLException {
 		// TODO Auto-generated method stub
 		conn.close();
