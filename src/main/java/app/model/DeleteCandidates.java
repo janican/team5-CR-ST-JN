@@ -79,7 +79,7 @@ public class DeleteCandidates extends HttpServlet {
 		Candidates candidates=new Candidates();
 		candidates.setSukunimi(request.getParameter("sukunimi"));
 		candidates.setEtunimi(request.getParameter("etunimi"));
-		candidates.setEhdokas_id(Integer.parseInt(request.getParameter("ehdokas_id")));
+		candidates.setId(Integer.parseInt(request.getParameter("ehdokas_id")));
 		return candidates;
 	}
 }
