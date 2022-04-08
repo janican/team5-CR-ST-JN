@@ -33,4 +33,10 @@ public class SecurityUtils {
 			result = Base64.getEncoder().encodeToString(salt);
 			return result;
 		}
+
+
+		public static boolean isPasswordOk(String salasana, String hashsalasana, String salt) {
+			// TODO Auto-generated method stub
+			return false;
+		}
 }
