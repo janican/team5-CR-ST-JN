@@ -26,18 +26,18 @@ public class EditCandidates extends HttpServlet {
 		// if sessions does not exist, create new one
 		HttpSession session = request.getSession();
 		
-		String ehdokas_idValue = request.getParameter("ehdokas_id");
+		String idValue = request.getParameter("ehdokas_id");
 		
-		if ( ehdokas_idValue != null ) {
+		if ( idValue != null ) {
 			try {
-				int id = Integer.parseInt(ehdokas_idValue);
+				int id = Integer.parseInt(idValue);
 				
 				Dao dao = new Dao();
 				Candidates candidates = dao.getCandidatesInfo(id);
 				
 				session.setAttribute("candidates", candidates);
 				
-				RequestDispatcher rd = request.getRequestDispatcher("jsp/editform.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("jsp/editcandidate.jsp");
 				rd.forward(request, response);
 				
 			} catch (Exception e) {

@@ -60,7 +60,6 @@ public class AddCandidates extends HttpServlet {
 				}
 			}
 
-	 <a href="/kysely.html">"Back to form"</a>
 	 
 	
 	private Candidates readCandidates(HttpServletRequest request) {
