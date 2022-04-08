@@ -1,21 +1,23 @@
 package app.model;
 
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.SQLException;
 
-@webServlet (
+@WebServlet (
 		name = "AddUserServlet",
 		urlPatterns = {"/add"}
 		)
 
-public class AddUserServlet {
+public class AddUserServlet extends HttpServlet {
 	
 	@Override
 	public void doGet (HttpServletRequest request, HttpServletResponse response)
 		throws IOException, ServletException {
-		
-		response.setContentType("text/html");
-		response.setCharacterEncoding("UTF-8");
 		
 		response.sendRedirect("Login.html");
 	}
@@ -33,7 +35,12 @@ public class AddUserServlet {
 		
 		dao.addUser(tunnus, hashsalasana, salt);
 		
-		dao.close();
+		try {
+			dao.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		response.sendRedirect("Login.html");
 	}
 

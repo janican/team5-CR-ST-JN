@@ -1,20 +1,27 @@
 package app.controller;
 
+import java.io.IOException;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import app.model.Dao;
+import app.model.SecurityUtils;
 
 @WebServlet(
 		name = "CheckServlet",
 		urlPatterns = {"/check"}
 		)
 
-public class CheckServlet {
+public class CheckServlet extends HttpServlet {
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
-	throws IOExpection, ServletException {
+	throws IOException, ServletException {
 		response.sendRedirect("Login.html");
 	}
 	@Override
@@ -28,10 +35,15 @@ public class CheckServlet {
 		String tunnus = request.getParameter("tunnus");
 		String salasana = request.getParameter("salasana");
 		
-		String salt = dao.getUserSalt(tunnus);
+		String salt = dao.getTunnusSalt(tunnus);
 		String hashsalasana = dao.getUserPasswordHash(salasana);
 		
-		dao.close();
+		try {
+			dao.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		if ( SecurityUtils.isPasswordOk(salasana, hashsalasana, salt) ) {
 			response.getWriter().println("Login success");

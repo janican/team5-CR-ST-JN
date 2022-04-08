@@ -162,4 +162,14 @@ public class Dao {
 		}
 		return result;
 	}
+
+	public String getUserPasswordHash(String salasana) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<Candidates> readAllCandidates() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
