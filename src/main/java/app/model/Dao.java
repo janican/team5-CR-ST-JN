@@ -67,8 +67,30 @@ public class Dao {
 	}
 
 	public ArrayList<Candidates> readAllCandidates() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Candidates> list=new ArrayList<>();
+		Statement stmt=null;
+		int count=0;
+		try {
+			stmt=conn.createStatement();
+			ResultSet rs=stmt.executeQuery("select * from ehdokkaat");
+			while (rs.next()) {
+				Candidates candidates= new Candidates();
+				candidates.setEhdokas_id(rs.getInt("ehdokas_id"));
+				candidates.setSukunimi(rs.getString("sukunimi"));
+				candidates.setEtunimi(rs.getString("etunimi"));
+				candidates.setPuolue(rs.getString("puolue"));
+				candidates.setKotipaikkakunta(rs.getString("kotipaikkakunta"));
+				candidates.setIka(rs.getInt("Ika"));
+				candidates.setMiksi_eduskuntaan(rs.getString("miksi_eduskuntaan"));
+				candidates.setMita_asioita_haluat_edistaa(rs.getString("mita_asioita-haluat_edistää"));
+				candidates.setAmmatti(rs.getString("ammatti"));
+				list.add(candidates);
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 	public void close() throws SQLException {
