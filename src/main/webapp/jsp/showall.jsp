@@ -29,7 +29,7 @@
 </tr>
 <c:forEach var="candidates" items="${sessionScope.allcandidates }">
 	<tr>
-		<td>${candidates.ehdokas_id }</td>
+		<td>${candidates.id }</td>
 		<td>${candidates.sukunimi }</td>
 		<td>${candidates.etunimi }</td>
 		<td>${candidates.puolue}</td>
@@ -39,9 +39,9 @@
 		<td>${candidates.mita_asioita_haluat_edistaa}</td>
 		<td>${candidates.ammatti}</td>
 		<td>
-			<a href="/editcandidates?id=${candidates.ehdokas_id }">Edit</a>
-			<a href="/deletecandidates?id=${candidates.ehdokas_id }">Delete</a>
-			<a href="/addcandidates?id=${candidates.ehdokas_id }">Add</a>
+			<a href="/editcandidates?id=${candidates.id }">Edit</a>
+			<a href="/deletecandidates?id=${candidates.id }">Delete</a>
+			<a href="/addcandidates?id=${candidates.id }">Add</a>
 		</td>
 	</tr>
 </c:forEach>

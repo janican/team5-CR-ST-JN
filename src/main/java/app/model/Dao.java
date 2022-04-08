@@ -13,7 +13,7 @@ public class Dao {
 	public Dao() { // DAO = DATA ACCESS OBJECT
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");  
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/vaalikone", "appuser@localhost", "kukkuluuruu");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/vaalikone", "appuser", "kukkuluuruu");
 			
 			
 		} 
@@ -65,7 +65,7 @@ public class Dao {
 			e.printStackTrace();
 		}
 	}
-/**
+
 	public ArrayList<Candidates> readAllCandidates() {
 		ArrayList<Candidates> list=new ArrayList<>();
 		Statement stmt=null;
@@ -75,14 +75,14 @@ public class Dao {
 			ResultSet rs=stmt.executeQuery("select * from ehdokkaat");
 			while (rs.next()) {
 				Candidates candidates= new Candidates();
-				candidates.setEhdokas_id(rs.getInt("ehdokas_id"));
+				candidates.setId(rs.getInt("ehdokas_id"));
 				candidates.setSukunimi(rs.getString("sukunimi"));
 				candidates.setEtunimi(rs.getString("etunimi"));
 				candidates.setPuolue(rs.getString("puolue"));
 				candidates.setKotipaikkakunta(rs.getString("kotipaikkakunta"));
 				candidates.setIka(rs.getInt("Ika"));
 				candidates.setMiksi_eduskuntaan(rs.getString("miksi_eduskuntaan"));
-				candidates.setMita_asioita_haluat_edistaa(rs.getString("mita_asioita-haluat_edistää"));
+				candidates.setMita_asioita_haluat_edistaa(rs.getString("mita_asioita_haluat_edistaa"));
 				candidates.setAmmatti(rs.getString("ammatti"));
 				list.add(candidates);
 			}
@@ -92,7 +92,7 @@ public class Dao {
 		}
 		return list;
 	}
-**/
+
 	public void close() throws SQLException {
 		// TODO Auto-generated method stub
 		conn.close();
@@ -168,8 +168,5 @@ public class Dao {
 		return null;
 	}
 
-	public ArrayList<Candidates> readAllCandidates() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 }
