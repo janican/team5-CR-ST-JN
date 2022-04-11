@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Dao {
 	private Connection conn;
@@ -51,7 +52,7 @@ public class Dao {
 		String sql="insert into ehdokkaat(sukunimi, etunimi, puolue, kotipaikkakunta, ika, miksi_eduskuntaan, mita_asioita_haluat_edistaa, ammatti) values(?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1,  candidates.getSukunimi());
+			pstmt.setString(1, candidates.getSukunimi());
 			pstmt.setString(2, candidates.getEtunimi());
 			pstmt.setString(3, candidates.getPuolue());
 			pstmt.setString(4, candidates.getKotipaikkakunta());

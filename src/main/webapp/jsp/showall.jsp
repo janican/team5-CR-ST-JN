@@ -15,6 +15,8 @@
 </head>
 <body>
 
+<a href="/readcandidates.jsp" class="button">Add new candidates</a>
+
 <table>
 <tr>
 	<th>Ehdokas_ID</th>
@@ -41,7 +43,6 @@
 		<td>
 			<a href="/editcandidates?id=${candidates.id }">Edit</a>
 			<a href="/deletecandidates?id=${candidates.id }">Delete</a>
-			<a href="/addcandidates?id=${candidates.id }">Add</a>
 		</td>
 	</tr>
 </c:forEach>

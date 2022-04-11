@@ -24,10 +24,10 @@ import app.model.Candidates;
  * and the servlet's URI (url-pattern) is 'addcandidates'
  */
 @WebServlet(
-		name = "AddCandidates",
-		urlPatterns = {"/addcandidates"}
+		name = "ReadCandidates",
+		urlPatterns = {"/readcandidates"}
 		)
-public class AddCandidates extends HttpServlet {
+public class ReadCandidates extends HttpServlet {
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
@@ -77,4 +77,3 @@ public class AddCandidates extends HttpServlet {
 		out.println("</ul>");
 	}
 }
-
