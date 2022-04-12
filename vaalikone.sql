@@ -90,3 +90,9 @@ INSERT INTO VASTAUKSET VALUES  (1, 18, 4, "ehdokkaan 1 vastaus kysymykseen 18");
 INSERT INTO VASTAUKSET VALUES  (1, 19, 3, "ehdokkaan 1 vastaus kysymykseen 19");
 INSERT INTO VASTAUKSET VALUES  (2, 1, 3, "ehdokkaan 2 vastaus kysymykseen 1");
 select * from vastaukset;
+create table KAYTTAJA (
+KAYTTAJA_ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+TUNNUS VARCHAR (100) NOT NULL,
+HASHSALASANA VARCHAR (100) NOT NULL,
+SALT VARCHAR (100) NOT NULL
+);
