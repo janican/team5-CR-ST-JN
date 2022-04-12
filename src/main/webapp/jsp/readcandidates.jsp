@@ -12,7 +12,7 @@
 </head>
 <body>
 
-	<form action='./editcandidates' method='post'>
+	<form action='jsp/showall.jsp' method='post'>
 		Sukunimi: <input type='text' name='sukunimi' value=''><br>
 		Etunimi: <input type='text' name='etunimi' value=''><br>
 		Puolue: <input type='text' name='puolue' value=''><br>
