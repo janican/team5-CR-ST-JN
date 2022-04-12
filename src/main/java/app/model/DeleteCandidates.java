@@ -40,10 +40,12 @@ public class DeleteCandidates extends HttpServlet {
 				RequestDispatcher rd = request.getRequestDispatcher("jsp/editcandidates.jsp");
 				rd.forward(request, response);
 				
-			} catch (Exception e) {
+			} 
+			catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else {
+		} 
+		else {
 			// Back to list
 			response.sendRedirect("/showdata");
 			

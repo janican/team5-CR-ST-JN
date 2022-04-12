@@ -1,7 +1,6 @@
 package app.model;
 
 import java.io.IOException;
-import java.util.LinkedList;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -59,8 +58,9 @@ public class ReadCandidates extends HttpServlet {
 				catch (SQLException e) {
 					e.printStackTrace();
 				}
-			}
-
+				
+				
+	}
 	
 	
 	private Candidates readCandidates(HttpServletRequest request) {
