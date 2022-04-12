@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<a href="jsp/readcandidates.jsp" class="button">Add new candidates</a>
+<a href="jsp/readcandidates.jsp" class="button">Add new candidate</a>
 
 <table>
 <tr>
@@ -41,7 +41,7 @@
 		<td>${candidates.mita_asioita_haluat_edistaa}</td>
 		<td>${candidates.ammatti}</td>
 		<td>
-			<a href="/editcandidates?id=${candidates.id }">Edit</a>
+			<a href="jsp/editcandidate.jsp?id=${candidates.id }">Edit</a>
 			<a href="/deletecandidates?id=${candidates.id }">Delete</a>
 		</td>
 	</tr>

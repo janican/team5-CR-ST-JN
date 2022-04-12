@@ -58,9 +58,9 @@ public class EditCandidates extends HttpServlet {
 		
 		// Create connection
 		Dao dao=new Dao();
-		Candidates candidates = readCandidates(request);
+		Candidates candidates = updateCandidates(request);
 		
-		dao.saveCandidates(candidates);
+		dao.updateCandidates(candidates);
 		
 		try {
 			dao.close();
@@ -75,11 +75,20 @@ public class EditCandidates extends HttpServlet {
 		response.sendRedirect("/showdata");
 	}
 	
+	private Candidates updateCandidates(HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		Candidates candidates=new Candidates();
+		candidates.setSukunimi(request.getParameter("sukunimi"));
+		candidates.setEtunimi(request.getParameter("etunimi"));
+		candidates.setId(Integer.parseInt(request.getParameter("ehdokas_id")));
+		return null;
+	}
+/**
 	private Candidates readCandidates(HttpServletRequest request) {
 		Candidates candidates=new Candidates();
 		candidates.setSukunimi(request.getParameter("sukunimi"));
 		candidates.setEtunimi(request.getParameter("etunimi"));
 		candidates.setId(Integer.parseInt(request.getParameter("ehdokas_id")));
 		return candidates;
-	}
+	}*/
 }

@@ -7,7 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.LinkedList;
+
+import app.model.Candidates;
 
 public class Dao {
 	private Connection conn;
@@ -34,10 +35,10 @@ public class Dao {
 			//Class.forName("com.mysql.cj.jdbc.Driver");  
 			//conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/vaalikone", "appuser@localhost", "kukkuluuruu");
 			Statement stmn = conn.createStatement();
-			ResultSet rs = stmn.executeQuery("SELECT * FROM EHDOKKAAT");
+			ResultSet rs = stmn.executeQuery("select from * ehdokkaat");
 			
 			while ( rs.next( ) ) {
-				System.out.println(rs.getString("ETUNIMI"));
+				System.out.println(rs.getString("sukunimi"));
 			}
 			
 		} 
@@ -48,7 +49,6 @@ public class Dao {
 	}
 
 	public void saveCandidates(Candidates candidates) {
-	
 		String sql="insert into ehdokkaat(sukunimi, etunimi, puolue, kotipaikkakunta, ika, miksi_eduskuntaan, mita_asioita_haluat_edistaa, ammatti) values(?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement pstmt=conn.prepareStatement(sql);
@@ -93,6 +93,45 @@ public class Dao {
 		}
 		return list;
 	}
+	
+	public int updateCandidates(Candidates candidates) {
+		int count = 0;
+		String sql = "update table ehdokkaat set sukunimi = ?, etunimi = ?, puolue = ?, kotipaikkakunta = ?, ika = ?, miksi_eduskuntaan = ?, mita_asioita_haluat_edistaa = ?, ammatti = ? where id =?";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, candidates.getSukunimi());
+			stmt.setString(2, candidates.getEtunimi());
+			stmt.setString(3, candidates.getPuolue());
+			stmt.setString(4, candidates.getKotipaikkakunta());
+			stmt.setInt(5, candidates.getIka());
+			stmt.setString(6, candidates.getMiksi_eduskuntaan());
+			stmt.setString(7, candidates.getMita_asioita_haluat_edistaa());
+			stmt.setString(8, candidates.getAmmatti());
+			stmt.setInt(9, candidates.getId());
+			count = stmt.executeUpdate();
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return count;
+	}
+	private ResultSet updateCandidates(Connection conn, int id) {
+		  String sql="delete from ehdokkaat where id=?";
+			try {
+				PreparedStatement pstmt=conn.prepareStatement(sql);
+				pstmt.setInt(1, id);
+				pstmt.executeUpdate();
+				
+				ResultSet RS=pstmt.executeQuery("select * from ehdokkaat");
+				return RS;
+				
+			} 
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
 
 	public void close() throws SQLException {
 		// TODO Auto-generated method stub

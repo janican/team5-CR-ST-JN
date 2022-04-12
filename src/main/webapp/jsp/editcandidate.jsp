@@ -11,10 +11,16 @@
 </head>
 <body>
 
-	<form action='./editcandidates' method='post'>
+	<form action='./editcandidate' method='post'>
 		Sukunimi: <input type='text' name='sukunimi' value='${sessionScope.candidates.sukunimi }'><br>
 		Etunimi: <input type='text' name='etunimi' value='${sessionScope.candidates.etunimi }'><br>
-		<input type="hidden" name="id" value="${sessionScope.candidates.id }">		
+		Puolue: <input type='text' name='puolue' value='${sessionScope.candidates.puolue }'><br>
+		Kotipaikkakunta: <input type='text' name='kotipaikkakunta' value='${sessionScope.candidates.kotipaikkakunta }'><br>
+		Ika: <input type='text' name='ika' value='${sessionScope.candidates.ika }'><br>
+		Miksi_eduskuntaan: <input type='text' name='miksi_eduskuntaan' value='${sessionScope.candidates.miksi_eduskuntaan }'><br>
+		Mita_asioita_haluat_editaa: <input type='text' name='mita_asioita_haluat_editaa' value='${sessionScope.candidates.mita_asioita_haluat_edistaa }'><br>
+		Ammatti: <input type='text' name='ammatti' value='${sessionScope.candidates.ammatti }'><br>
+		<input type="hidden" name="id" value="${sessionScope.candidates.id }">
 		<input type='submit' name='ok' value='Edit'>
 	</form>
 	

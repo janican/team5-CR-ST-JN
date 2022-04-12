@@ -40,6 +40,8 @@ public class AddCandidates extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		
+		RequestDispatcher rd=request.getRequestDispatcher("staticpages/htmlstart.html");
+		rd.include(request,  response);;
 		
 		// Read parameters to Model
 				Candidates candidates=readCandidates(request);
