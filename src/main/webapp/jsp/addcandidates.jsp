@@ -12,7 +12,7 @@
 </head>
 <body>
 
-	<form action='./showall' method='post'>
+	<form action='./addcandidates' method='post'>
 		Sukunimi: <input type='text' name='sukunimi' value='${sessionScope.candidates.sukunimi }'><br>
 		Etunimi: <input type='text' name='etunimi' value='${sessionScope.candidates.setunimi }'><br>
 		<input type="hidden" name="id" value="${sessionScope.candidates.id }">		
