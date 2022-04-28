@@ -85,7 +85,7 @@ public class EditCandidates extends HttpServlet {
 		candidates.setEtunimi(request.getParameter("etunimi"));
 		candidates.setPuolue(request.getParameter("puolue"));
 		candidates.setKotipaikkakunta(request.getParameter("kotipaikkakunta"));
-		candidates.setIka(request.getParameter("ika"));
+		candidates.setIka(Integer.parseInt(request.getParameter("ika")));
 		candidates.setMiksi_eduskuntaan(request.getParameter("miksi_eduskuntaan"));
 		candidates.setMita_asioita_haluat_edistaa(request.getParameter("mita_asioita_haluat_edistaa"));
 		candidates.setAmmatti(request.getParameter("ammatti"));
