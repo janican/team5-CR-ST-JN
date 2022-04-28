@@ -26,7 +26,7 @@ public class DeleteCandidates extends HttpServlet {
 		// if sessions does not exist, create new one
 		HttpSession session = request.getSession();
 		
-		String ehdokas_idValue = request.getParameter("ehdokas_id");
+		String ehdokas_idValue = request.getParameter("id");
 		
 		if ( ehdokas_idValue != null ) {
 			try {
@@ -37,7 +37,7 @@ public class DeleteCandidates extends HttpServlet {
 				
 				session.setAttribute("candidates", candidates);
 				
-				RequestDispatcher rd = request.getRequestDispatcher("jsp/editcandidates.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/deletecandidates.jsp");
 				rd.forward(request, response);
 				
 			} 

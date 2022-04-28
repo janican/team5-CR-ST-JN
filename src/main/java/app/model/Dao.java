@@ -116,7 +116,7 @@ public class Dao {
 		}
 		return count;
 	}
-	private ResultSet updateCandidates(Connection conn, int id) {
+	private ResultSet deleteCandidates(Connection conn, int id) {
 		  String sql="delete from ehdokkaat where id=?";
 			try {
 				PreparedStatement pstmt=conn.prepareStatement(sql);

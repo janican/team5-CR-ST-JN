@@ -67,7 +67,7 @@ public class ReadCandidates extends HttpServlet {
 		Candidates candidates=new Candidates();
 		candidates.setSukunimi(request.getParameter("sukunimi"));
 		candidates.setEtunimi(request.getParameter("etunimi"));
-		return null;
+		return candidates;
 	}
 	private void printCandidatesList(PrintWriter out, ArrayList<Candidates> list) {
 		out.println("<ul>");

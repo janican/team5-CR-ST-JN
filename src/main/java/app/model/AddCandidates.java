@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import app.model.Dao;
 import app.model.Candidates; 
@@ -37,11 +38,11 @@ public class AddCandidates extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws IOException, ServletException {
-		response.setContentType("text/html");
+		//response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		
-		RequestDispatcher rd=request.getRequestDispatcher("staticpages/htmlstart.html");
-		rd.include(request,  response);;
+		//RequestDispatcher rd=request.getRequestDispatcher("/addcandidates.jsp");
+		//rd.include(request,  response);;
 		
 		// Read parameters to Model
 				Candidates candidates=readCandidates(request);
@@ -52,15 +53,18 @@ public class AddCandidates extends HttpServlet {
 				// Save value and query total list
 				dao.saveCandidates(candidates);
 				ArrayList<Candidates> list=dao.readAllCandidates();
+				HttpSession session = request.getSession();
+				session.setAttribute("candidates", candidates);
 				
 				// print output and close connection
-				printCandidatesList(out, list);
+				//printCandidatesList(out, list);
 				try {
 					dao.close();
 				} 
 				catch (SQLException e) {
 					e.printStackTrace();
 				}
+				response.sendRedirect("/showdata");
 			}
 
 	

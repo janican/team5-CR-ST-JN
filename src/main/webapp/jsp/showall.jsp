@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<a href="jsp/readcandidates.jsp" class="button">Add new candidate</a>
+<a href="jsp/addcandidates.jsp" class="button">Add new candidate</a>
 
 <table>
 <tr>

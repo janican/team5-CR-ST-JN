@@ -12,10 +12,15 @@
 </head>
 <body>
 
-	<form action='./addcandidates' method='post'>
-		Sukunimi: <input type='text' name='sukunimi' value='${sessionScope.candidates.sukunimi }'><br>
-		Etunimi: <input type='text' name='etunimi' value='${sessionScope.candidates.setunimi }'><br>
-		<input type="hidden" name="id" value="${sessionScope.candidates.id }">		
+	<form action='/addcandidates' method='post'>
+		Sukunimi: <input type='text' name='sukunimi' value=''><br>
+		Etunimi: <input type='text' name='etunimi' value=''><br>
+		Puolue: <input type='text' name='puolue' value=''><br>
+		Kotipaikkakunta: <input type='text' name='kotipaikkakunta' value=''><br>
+		Ika: <input type='text' name='ika' value=''><br>
+		Miksi_eduskuntaan: <input type='text' name='miksi_eduskuntaan' value=''><br>
+		Mita_asioita_haluat_edistaa: <input type='text' name='mita_asioita_haluat_edistaa' value=''><br>
+		Ammatti: <input type='text' name='ammatti' value=''><br>
 		<input type='submit' name='ok' value='Add'>
 	</form>
 	
