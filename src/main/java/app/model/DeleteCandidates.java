@@ -37,7 +37,7 @@ public class DeleteCandidates extends HttpServlet {
 				
 				session.setAttribute("candidates", candidates);
 				
-				RequestDispatcher rd = request.getRequestDispatcher("/deletecandidates.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("jsp/deletecandidates.jsp");
 				rd.forward(request, response);
 				
 			} 
@@ -62,7 +62,7 @@ public class DeleteCandidates extends HttpServlet {
 		Dao dao=new Dao();
 		Candidates candidates = readCandidates(request);
 		
-		dao.saveCandidates(candidates);
+		dao.deleteCandidates(candidates.getId());
 		
 		try {
 			dao.close();

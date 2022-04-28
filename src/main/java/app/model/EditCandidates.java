@@ -30,7 +30,7 @@ public class EditCandidates extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		String idValue = request.getParameter("id");
-		
+		System.out.println(idValue);
 		if ( idValue != null ) {
 			try {
 				int id = Integer.parseInt(idValue);
@@ -42,7 +42,7 @@ public class EditCandidates extends HttpServlet {
 				
 				session.setAttribute("candidates", candidates);
 				
-				RequestDispatcher rd = request.getRequestDispatcher("/editcandidate.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("jsp/editcandidate.jsp");
 				rd.forward(request, response);
 				
 			} catch (Exception e) {
@@ -58,7 +58,7 @@ public class EditCandidates extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws IOException, ServletException {
-		doGet(request, response);
+		
 	
 		Dao dao=new Dao();
 		Candidates candidates=updateCandidates(request);

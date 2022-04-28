@@ -96,7 +96,7 @@ public class Dao {
 	
 	public int updateCandidates(Candidates candidates) {
 		int count = 0;
-		String sql = "update table ehdokkaat set sukunimi = ?, etunimi = ?, puolue = ?, kotipaikkakunta = ?, ika = ?, miksi_eduskuntaan = ?, mita_asioita_haluat_edistaa = ?, ammatti = ? where id =?";
+		String sql = "update ehdokkaat set sukunimi = ?, etunimi = ?, puolue = ?, kotipaikkakunta = ?, ika = ?, miksi_eduskuntaan = ?, mita_asioita_haluat_edistaa = ?, ammatti = ? where ehdokas_id =?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, candidates.getSukunimi());
@@ -116,21 +116,20 @@ public class Dao {
 		}
 		return count;
 	}
-	private ResultSet deleteCandidates(Connection conn, int id) {
-		  String sql="delete from ehdokkaat where id=?";
+	public void deleteCandidates( int id) {
+		  String sql="delete from ehdokkaat where ehdokas_id=?";
 			try {
 				PreparedStatement pstmt=conn.prepareStatement(sql);
 				pstmt.setInt(1, id);
 				pstmt.executeUpdate();
 				
-				ResultSet RS=pstmt.executeQuery("select * from ehdokkaat");
-				return RS;
+				
 				
 			} 
 			catch (SQLException e) {
 				e.printStackTrace();
 			}
-			return null;
+		
 		}
 
 	public void close() throws SQLException {
@@ -139,9 +138,34 @@ public class Dao {
 	}
 
 	public Candidates getCandidatesInfo(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Candidates candidates=null;
+		PreparedStatement stmt=null;
+		
+		try {
+			stmt=conn.prepareStatement("select * from ehdokkaat where ehdokas_id=?");
+			stmt.setInt(1, id);
+			ResultSet rs=stmt.executeQuery();
+			
+			if (rs.next()) {
+				candidates= new Candidates();
+				candidates.setId(rs.getInt("ehdokas_id"));
+				candidates.setSukunimi(rs.getString("sukunimi"));
+				candidates.setEtunimi(rs.getString("etunimi"));
+				candidates.setPuolue(rs.getString("puolue"));
+				candidates.setKotipaikkakunta(rs.getString("kotipaikkakunta"));
+				candidates.setIka(rs.getInt("Ika"));
+				candidates.setMiksi_eduskuntaan(rs.getString("miksi_eduskuntaan"));
+				candidates.setMita_asioita_haluat_edistaa(rs.getString("mita_asioita_haluat_edistaa"));
+				candidates.setAmmatti(rs.getString("ammatti"));
+				
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return candidates;
 	}
+	
 
 	//public void close() {
 	//	try { 

@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<form action='./editcandidate' method='post'>
+	<form action='/editcandidates' method='post'>
 		Sukunimi: <input type='text' name='sukunimi' value='${sessionScope.candidates.sukunimi }'><br>
 		Etunimi: <input type='text' name='etunimi' value='${sessionScope.candidates.etunimi }'><br>
 		Puolue: <input type='text' name='puolue' value='${sessionScope.candidates.puolue }'><br>

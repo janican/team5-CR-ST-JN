@@ -41,7 +41,7 @@
 		<td>${candidates.mita_asioita_haluat_edistaa}</td>
 		<td>${candidates.ammatti}</td>
 		<td>
-			<a href="jsp/editcandidate.jsp?id=${candidates.id }">Edit</a>
+			<a href="/editcandidates?id=${candidates.id }">Edit</a>
 			<a href="/deletecandidates?id=${candidates.id }">Delete</a>
 		</td>
 	</tr>

@@ -73,6 +73,7 @@ public class AddCandidates extends HttpServlet {
 		Candidates candidates=new Candidates();
 		candidates.setSukunimi(request.getParameter("sukunimi"));
 		candidates.setEtunimi(request.getParameter("etunimi"));
+		candidates.setEtunimi(request.getParameter("etunimi"));
 		return candidates;
 	}
 	private void printCandidatesList(PrintWriter out, ArrayList<Candidates> list) {
