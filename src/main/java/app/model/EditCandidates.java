@@ -80,9 +80,15 @@ public class EditCandidates extends HttpServlet {
 	private Candidates updateCandidates(HttpServletRequest request) {
 		// TODO Auto-generated method stub
 		Candidates candidates=new Candidates();
+		candidates.setId(Integer.parseInt(request.getParameter("id")));
 		candidates.setSukunimi(request.getParameter("sukunimi"));
 		candidates.setEtunimi(request.getParameter("etunimi"));
-		candidates.setId(Integer.parseInt(request.getParameter("id")));
+		candidates.setPuolue(request.getParameter("puolue"));
+		candidates.setKotipaikkakunta(request.getParameter("kotipaikkakunta"));
+		candidates.setIka(request.getParameter("ika"));
+		candidates.setMiksi_eduskuntaan(request.getParameter("miksi_eduskuntaan"));
+		candidates.setMita_asioita_haluat_edistaa(request.getParameter("mita_asioita_haluat_edistaa"));
+		candidates.setAmmatti(request.getParameter("ammatti"));
 		return candidates;
 	}
 /**
