@@ -19,6 +19,9 @@ public class AddUserServlet extends HttpServlet {
 	public void doGet (HttpServletRequest request, HttpServletResponse response)
 		throws IOException, ServletException {
 		
+		response.setContentType("text/html");
+		response.setCharacterEncoding("UTF-8");
+		
 		response.sendRedirect("Login.html");
 	}
 	@Override
@@ -30,10 +33,7 @@ public class AddUserServlet extends HttpServlet {
 		String tunnus = request.getParameter("tunnus");
 		String salasana = request.getParameter("salasana");
 		
-		String salt = SecurityUtils.getSalt();
-		String hashsalasana = SecurityUtils.getPasswordHashed(salasana, salt);
-		
-		dao.addUser(tunnus, hashsalasana, salt);
+
 		
 		try {
 			dao.close();

@@ -36,7 +36,7 @@ public class CheckServlet extends HttpServlet {
 		String salasana = request.getParameter("salasana");
 		
 		String salt = dao.getTunnusSalt(tunnus);
-		String hashsalasana = dao.getUserPasswordHash(salasana);
+		String hashsalasana = dao.getUserPasswordHash(tunnus);
 		
 		try {
 			dao.close();

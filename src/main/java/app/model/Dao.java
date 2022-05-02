@@ -201,13 +201,13 @@ public class Dao {
 		return result;	
 	}
 	
-	public String getTunnusHashSalasana(String kayttaja) {
+	public String getTunnusHashSalasana(String tunnus) {
 		String result = "";
 		String sql = "select hashsalasana from kayttaja where tunnus = ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			
-			stmt.setString(1, kayttaja);
+			stmt.setString(1, tunnus);
 			
 			ResultSet rs = stmt.executeQuery();
 			
