@@ -7,7 +7,7 @@ import java.util.Base64;
 
 public class SecurityUtils {
 		
-		public static String getSalt(String HashSalasana, String salt) {
+		public static String getSalt(String salasana, String salt) {
 			String result = "";
 			
 			try {
@@ -15,7 +15,7 @@ public class SecurityUtils {
 				
 				byte[] saltBytes = Base64.getDecoder().decode(salt);
 				md.update(saltBytes);
-				byte[] bytes = md.digest(HashSalasana.getBytes());
+				byte[] bytes = md.digest(salasana.getBytes());
 				
 				result = Base64.getEncoder().encodeToString(bytes);
 			} catch (NoSuchAlgorithmException e) {
@@ -35,16 +35,16 @@ public class SecurityUtils {
 		}
 
 
-		public static boolean isPasswordOk(String storedSalasana, String hashsalasana, String storedSalt) {
+		public static boolean isPasswordOk(String storedHash, String hashSalasana, String storedSalt) {
 			// TODO Auto-generated method stub
-			if ( storedSalasana.equals(getPasswordHashed(hashsalasana, storedSalt))) {
+			if ( storedHash.equals(getPasswordHashed(hashSalasana, storedSalt))) {
 				return true;
 			}
 			return false;
 		}
 
 
-		private static Object getPasswordHashed(String hashsalasana, String storedSalt) {
+		static String getPasswordHashed(String hashSalasana, String storedSalt) {
 			// TODO Auto-generated method stub
 			return null;
 		}

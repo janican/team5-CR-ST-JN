@@ -31,8 +31,12 @@ public class AddUserServlet extends HttpServlet {
 		Dao dao = new Dao();
 		
 		String tunnus = request.getParameter("tunnus");
-		String salasana = request.getParameter("salasana");
+		String hashSalasana = request.getParameter("salasana");
 		
+		String salt = SecurityUtils.getSalt();
+		String hashpw = SecurityUtils.getPasswordHashed(hashSalasana, salt);
+		
+		dao.addUser(tunnus, hashSalasana, salt);
 
 		
 		try {

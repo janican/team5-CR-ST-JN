@@ -174,14 +174,14 @@ public class Dao {
 	//		e.printStackTrace();;
 	//	}
 	// }
-	public void addUser(String tunnus, String hashsalasana, String salt) {
+	public void addUser(String tunnus, String hashSalasana, String salt) {
 		// TODO Auto-generated method stub
 		String sql = "insert into kayttaja (tunnus, hashsalasana, salt) values (?,?,?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			
 			stmt.setString(1, tunnus);
-			stmt.setString(2, hashsalasana);
+			stmt.setString(2, hashSalasana);
 			stmt.setString(3, salt);
 			
 			stmt.executeUpdate();
@@ -219,7 +219,7 @@ public class Dao {
 			ResultSet rs = stmt.executeQuery();
 			
 			if ( rs.next() ) {
-				result = rs.getString("hashsalasana");
+				result = rs.getString("hashSalasana");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -36,7 +36,7 @@ public class CheckServlet extends HttpServlet {
 		String salasana = request.getParameter("salasana");
 		
 		String salt = dao.getTunnusSalt(tunnus);
-		String hashsalasana = dao.getUserPasswordHash(tunnus);
+		String hashSalasana = dao.getUserPasswordHash(tunnus);
 		
 		try {
 			dao.close();
@@ -45,7 +45,7 @@ public class CheckServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		if ( SecurityUtils.isPasswordOk(salasana, hashsalasana, salt) ) {
+		if ( SecurityUtils.isPasswordOk(salasana, hashSalasana, salt) ) {
 			response.getWriter().println("Login success");
 		} else {
 			response.getWriter().println("Login failed");
