@@ -167,14 +167,7 @@ public class Dao {
 	}
 	
 
-	//public void close() {
-	//	try { 
-	//		conn.close();
-	//	} catch (SQLException e) {
-	//		e.printStackTrace();;
-	//	}
-	// }
-	public void addUser(String tunnus, String hashSalasana, String salt) {
+	public void addUser(String tunnus, String hashsalasana, String salt) {
 		// TODO Auto-generated method stub
 		String sql = "insert into kayttaja (tunnus, hashsalasana, salt) values (?,?,?)";
 		try {
