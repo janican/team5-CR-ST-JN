@@ -174,7 +174,7 @@ public class Dao {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			
 			stmt.setString(1, tunnus);
-			stmt.setString(2, hashSalasana);
+			stmt.setString(2, hashsalasana);
 			stmt.setString(3, salt);
 			
 			stmt.executeUpdate();

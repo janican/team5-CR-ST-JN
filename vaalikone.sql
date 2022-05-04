@@ -5,7 +5,7 @@ ALTER DATABASE vaalikone CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 create user appuser@localhost identified by 'kukkuluuruu';
 grant all on vaalikone.* to appuser@localhost;
 CREATE TABLE EHDOKKAAT (
-   EHDOKAS_ID INTEGER NOT NULL,
+   EHDOKAS_ID INTEGER NOT NULL auto_increment,
    SUKUNIMI VARCHAR(25),
    ETUNIMI VARCHAR(25),
    PUOLUE VARCHAR(50),
