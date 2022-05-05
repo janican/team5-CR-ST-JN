@@ -2,6 +2,11 @@ package app.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Table(name ="Ehdokkaat")
+@Entity
 public class Candidates implements Serializable {
 	private int ehdokas_id;
 	private String sukunimi;
