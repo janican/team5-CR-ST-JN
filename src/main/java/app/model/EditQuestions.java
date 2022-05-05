@@ -2,6 +2,7 @@ package app.model;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -30,5 +31,6 @@ public class EditQuestions {
 	public void readAllQuestions() {
 		//Kysymysten luku JPA:lla
 		//Listan lähetys jsp:lle (forward)
+		Candidates c=em.find(Candidates.class, id);
 	}
 }
