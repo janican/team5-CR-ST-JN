@@ -1,10 +1,13 @@
 package rest;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,7 +34,7 @@ public class EditQuestions extends HttpServlet{
 	HttpServletResponse response;
 	
 	EntityManagerFactory emf=Persistence.createEntityManagerFactory("vaalikone");
-	EntityManager em=emf.createEntityManager();
+	
 	
 	
 	//@POST
@@ -43,48 +46,55 @@ public class EditQuestions extends HttpServlet{
 	
 	@GET
 	@Path("/allquestions")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public List<Candidates> readAllQuestions(@PathParam("id") int id) {
+	public void readAllQuestions() {
 		//Kysymysten luku JPA:lla
 		//Listan lähetys jsp:lle (forward)
-		Kysymykset k=em.find(Kysymykset.class, id);
-		em.getTransaction().begin();
-		em.persist(kysymykset);
-		em.getTransaction().commit();
-	}
-	
-	@PUT
-	@Path("/updatequestions")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public List<Kysymykset> updateQuestions(Candidates candidates) {
 		EntityManager em=emf.createEntityManager();
 		em.getTransaction().begin();
-		Kysymykset k=em.find(Kysymykset.class, kysymykset.getId());
-		if (k!=null) {
-			em.merge(kysymykset);
-		}
+	    List<Kysymykset> list = em.createQuery("select k from Kysymykset k").getResultList();
 		em.getTransaction().commit();
-		
-		List<Kysymykset> list=readAllQuestions(id);		
-		return list;
-	}	
-	
-	@DELETE 
-	@Path("/deletequestions/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public List<Kysymykset> deleteQuestions(@PathParam("id") int id) {
-		EntityManager em=emf.createEntityManager();
-		em.getTransaction().begin();
-		Kysymykset k=em.find(Kysymykset.class, id);
-		if (k!=null) {
-			em.remove(k);
+		request.setAttribute("kysymyslista", list);
+		RequestDispatcher rd = request.getRequestDispatcher("/jsp/showallquestion.jsp");
+		try {
+			rd.forward(request, response);
+		} catch (ServletException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
 		}
-		em.getTransaction().commit();
-		List<Kysymykset> list=readAllQuestions(id);		
-		return list;
-		
 	}
+	
+//	@PUT
+//	@Path("/updatequestions")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	public List<Kysymykset> updateQuestions(Candidates candidates) {
+//		EntityManager em=emf.createEntityManager();
+//		em.getTransaction().begin();
+//		Kysymykset k=em.find(Kysymykset.class, kysymykset.getId());
+//		if (k!=null) {
+//			em.merge(kysymykset);
+//		}
+//		em.getTransaction().commit();
+//		
+//		List<Kysymykset> list=readAllQuestions(id);		
+//		return list;
+//	}	
+//	
+//	@DELETE 
+//	@Path("/deletequestions/{id}")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	public List<Kysymykset> deleteQuestions(@PathParam("id") int id) {
+//		EntityManager em=emf.createEntityManager();
+//		em.getTransaction().begin();
+//		Kysymykset k=em.find(Kysymykset.class, id);
+//		if (k!=null) {
+//			em.remove(k);
+//		}
+//		em.getTransaction().commit();
+//		List<Kysymykset> list=readAllQuestions(id);		
+//		return list;
+//		
+//	}
 }

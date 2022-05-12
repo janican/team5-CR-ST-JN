@@ -104,6 +104,7 @@
             <version>2.2.2</version>
         </dependency>
         <!-- Test Dependencies -->
+        
             <!-- This dependency is needed for annotations (e.g. @Path, @Consumes, @Produces etc.) in the REST-class-->
 	<dependency>
 	    <groupId>org.glassfish.jersey.media</groupId>
@@ -152,6 +153,13 @@
 	    <artifactId>activation</artifactId>
 	    <version>1.1.1</version>
 	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+<dependency>
+    <groupId>commons-codec</groupId>
+    <artifactId>commons-codec</artifactId>
+    <version>1.15</version>
+</dependency> 
 
 <!-- END: Added by Pena -->
         <dependency>
